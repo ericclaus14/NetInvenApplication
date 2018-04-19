@@ -1,5 +1,3 @@
--- To do:
----- Check if virtual_machines.hypervisor is in devices.host_name AND devices.device_subtype='Hypervisor'
 CREATE DATABASE NetInventory
 GO
 
