@@ -1,0 +1,122 @@
+﻿@model IEnumerable<NetInvenApplication.Models.Switch_Maps>
+
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    Layout = "";
+}
+
+<head>
+    <title>Switch Maps</title>
+    <link href="~/content/style.css" rel="stylesheet" type="text/css" />
+    @* Sorting Javascript script from: https://www.kryogenix.org/code/browser/sorttable/ *@
+    <script src="~/Scripts/sorttable.js"></script>
+</head>
+
+<body id="Switch_Maps">
+    <div class="side-bar">
+        <ul>
+            <li>
+                <a href="~/home/index" id="menu_home" title="Home">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="~/All_Device_Data/" id="menu_inventory" title="View Inventory">
+                    View Inventory
+                </a>
+            </li>
+            <li>
+                <a href="~/All_Device_Data/Create" id="menu_add" title="Add Entity">
+                    Switch Maps
+                </a>
+            </li>
+            <li>
+                <a href="~/Switch_Maps/" id="menu_switch" title="Switch Maps">
+                    Add Entity
+                </a>
+            </li>
+            <li>
+                <a href="~/home/support" id="menu_support" title="Support">
+                    Support
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="page-header">
+        <h1>View Switch Maps</h1>
+    </div>
+
+    <div class="page-content">
+        <div class="table-container">
+            <table class="sortable sql-results">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.switch_name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.switch_port)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.vlan_id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.mac_address)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.static_ip)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.building)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.room)
+                    </th>
+                    @*<th></th>*@
+                </tr>
+
+                @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.switch_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.switch_port)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.vlan_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.mac_address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.static_ip)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.building)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.room)
+                </td>
+                @*<td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.asset_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.asset_id })
+            </td>*@
+            </tr>
+}
+            </table>
+        </div>
+    </div>
+    <div class="footer">
+        Design by <a href="https://www.linkedin.com/in/ericclaus/">Eric Claus</a>
+    </div>
+</body>

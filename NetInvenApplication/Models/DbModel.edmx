@@ -1,0 +1,856 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NetInventoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="computers">
+          <Key>
+            <PropertyRef Name="asset_id" />
+          </Key>
+          <Property Name="asset_id" Type="smallint" Nullable="false" />
+          <Property Name="os_version" Type="varchar" MaxLength="30" />
+          <Property Name="cpu" Type="varchar" MaxLength="30" />
+          <Property Name="ram" Type="varchar" MaxLength="10" />
+          <Property Name="hdd" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="device_types">
+          <Key>
+            <PropertyRef Name="type" />
+            <PropertyRef Name="subtype" />
+          </Key>
+          <Property Name="type" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="subtype" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="devices">
+          <Key>
+            <PropertyRef Name="asset_id" />
+          </Key>
+          <Property Name="asset_id" Type="smallint" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="30" />
+          <Property Name="device_type" Type="varchar" MaxLength="15" />
+          <Property Name="device_subtype" Type="varchar" MaxLength="15" />
+          <Property Name="manufacturer" Type="varchar" MaxLength="15" />
+          <Property Name="model" Type="varchar" MaxLength="30" />
+          <Property Name="serial_number" Type="varchar" MaxLength="30" />
+          <Property Name="building" Type="varchar" MaxLength="30" />
+          <Property Name="room" Type="varchar" MaxLength="15" />
+          <Property Name="status" Type="varchar" MaxLength="9" />
+        </EntityType>
+        <EntityType Name="network_devices">
+          <Key>
+            <PropertyRef Name="asset_id" />
+          </Key>
+          <Property Name="asset_id" Type="smallint" Nullable="false" />
+          <Property Name="host_name" Type="varchar" MaxLength="30" />
+          <Property Name="mac_address" Type="varchar" MaxLength="17" />
+          <Property Name="static_ip" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="virtual_machines">
+          <Key>
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="hypervisor" Type="varchar" MaxLength="30" />
+          <Property Name="services" Type="varchar" MaxLength="30" />
+          <Property Name="os_version" Type="varchar" MaxLength="30" />
+          <Property Name="vcpu" Type="varchar" MaxLength="5" />
+          <Property Name="ram" Type="varchar" MaxLength="5" />
+          <Property Name="hdd" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="vlans">
+          <Key>
+            <PropertyRef Name="vlan_id" />
+          </Key>
+          <Property Name="vlan_id" Type="smallint" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="wired_devices">
+          <Key>
+            <PropertyRef Name="asset_id" />
+          </Key>
+          <Property Name="asset_id" Type="smallint" Nullable="false" />
+          <Property Name="switch_name" Type="varchar" MaxLength="30" />
+          <Property Name="switch_port" Type="varchar" MaxLength="30" />
+          <Property Name="vlan_id" Type="smallint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NetInventory.dbo.All_Device_Data' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="All_Device_Data">
+          <Key>
+            <PropertyRef Name="asset_id" />
+          </Key>
+          <Property Name="asset_id" Type="smallint" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="30" />
+          <Property Name="device_type" Type="varchar" MaxLength="15" />
+          <Property Name="device_subtype" Type="varchar" MaxLength="15" />
+          <Property Name="manufacturer" Type="varchar" MaxLength="15" />
+          <Property Name="model" Type="varchar" MaxLength="30" />
+          <Property Name="serial_number" Type="varchar" MaxLength="30" />
+          <Property Name="building" Type="varchar" MaxLength="30" />
+          <Property Name="room" Type="varchar" MaxLength="15" />
+          <Property Name="status" Type="varchar" MaxLength="9" />
+          <Property Name="host_name" Type="varchar" MaxLength="30" />
+          <Property Name="mac_address" Type="varchar" MaxLength="17" />
+          <Property Name="static_ip" Type="varchar" MaxLength="15" />
+          <Property Name="switch_name" Type="varchar" MaxLength="30" />
+          <Property Name="switch_port" Type="varchar" MaxLength="30" />
+          <Property Name="vlan_id" Type="smallint" />
+          <Property Name="os_version" Type="varchar" MaxLength="30" />
+          <Property Name="cpu" Type="varchar" MaxLength="30" />
+          <Property Name="ram" Type="varchar" MaxLength="10" />
+          <Property Name="hdd" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NetInventory.dbo.Computers_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Computers_View">
+          <Key>
+            <PropertyRef Name="asset_id" />
+          </Key>
+          <Property Name="asset_id" Type="smallint" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="30" />
+          <Property Name="device_type" Type="varchar" MaxLength="15" />
+          <Property Name="device_subtype" Type="varchar" MaxLength="15" />
+          <Property Name="manufacturer" Type="varchar" MaxLength="15" />
+          <Property Name="model" Type="varchar" MaxLength="30" />
+          <Property Name="serial_number" Type="varchar" MaxLength="30" />
+          <Property Name="building" Type="varchar" MaxLength="30" />
+          <Property Name="room" Type="varchar" MaxLength="15" />
+          <Property Name="status" Type="varchar" MaxLength="9" />
+          <Property Name="host_name" Type="varchar" MaxLength="30" />
+          <Property Name="mac_address" Type="varchar" MaxLength="17" />
+          <Property Name="static_ip" Type="varchar" MaxLength="15" />
+          <Property Name="switch_name" Type="varchar" MaxLength="30" />
+          <Property Name="switch_port" Type="varchar" MaxLength="30" />
+          <Property Name="vlan_id" Type="smallint" />
+          <Property Name="os_version" Type="varchar" MaxLength="30" />
+          <Property Name="cpu" Type="varchar" MaxLength="30" />
+          <Property Name="ram" Type="varchar" MaxLength="10" />
+          <Property Name="hdd" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NetInventory.dbo.Device_Types_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Device_Types_View">
+          <Key>
+            <PropertyRef Name="type" />
+          </Key>
+          <Property Name="type" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NetInventory.dbo.Servers_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Servers_View">
+          <Key>
+            <PropertyRef Name="asset_id" />
+          </Key>
+          <Property Name="asset_id" Type="smallint" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="30" />
+          <Property Name="device_type" Type="varchar" MaxLength="15" />
+          <Property Name="device_subtype" Type="varchar" MaxLength="15" />
+          <Property Name="manufacturer" Type="varchar" MaxLength="15" />
+          <Property Name="model" Type="varchar" MaxLength="30" />
+          <Property Name="serial_number" Type="varchar" MaxLength="30" />
+          <Property Name="building" Type="varchar" MaxLength="30" />
+          <Property Name="room" Type="varchar" MaxLength="15" />
+          <Property Name="status" Type="varchar" MaxLength="9" />
+          <Property Name="host_name" Type="varchar" MaxLength="30" />
+          <Property Name="mac_address" Type="varchar" MaxLength="17" />
+          <Property Name="static_ip" Type="varchar" MaxLength="15" />
+          <Property Name="switch_name" Type="varchar" MaxLength="30" />
+          <Property Name="switch_port" Type="varchar" MaxLength="30" />
+          <Property Name="vlan_id" Type="smallint" />
+          <Property Name="os_version" Type="varchar" MaxLength="30" />
+          <Property Name="cpu" Type="varchar" MaxLength="30" />
+          <Property Name="ram" Type="varchar" MaxLength="10" />
+          <Property Name="hdd" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NetInventory.dbo.Switch_Maps' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Switch_Maps">
+          <Key>
+            <PropertyRef Name="asset_id" />
+          </Key>
+          <Property Name="switch_name" Type="varchar" MaxLength="30" />
+          <Property Name="switch_port" Type="varchar" MaxLength="30" />
+          <Property Name="vlan_id" Type="smallint" />
+          <Property Name="asset_id" Type="smallint" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="30" />
+          <Property Name="mac_address" Type="varchar" MaxLength="17" />
+          <Property Name="static_ip" Type="varchar" MaxLength="15" />
+          <Property Name="building" Type="varchar" MaxLength="30" />
+          <Property Name="room" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <Association Name="FK__computers__asset__46E78A0C">
+          <End Role="devices" Type="Self.devices" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="computers" Type="Self.computers" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="devices">
+              <PropertyRef Name="asset_id" />
+            </Principal>
+            <Dependent Role="computers">
+              <PropertyRef Name="asset_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__devices__3D5E1FD2">
+          <End Role="device_types" Type="Self.device_types" Multiplicity="0..1" />
+          <End Role="devices" Type="Self.devices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="device_types">
+              <PropertyRef Name="type" />
+              <PropertyRef Name="subtype" />
+            </Principal>
+            <Dependent Role="devices">
+              <PropertyRef Name="device_type" />
+              <PropertyRef Name="device_subtype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__network_d__asset__403A8C7D">
+          <End Role="devices" Type="Self.devices" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="network_devices" Type="Self.network_devices" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="devices">
+              <PropertyRef Name="asset_id" />
+            </Principal>
+            <Dependent Role="network_devices">
+              <PropertyRef Name="asset_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__wired_dev__asset__4316F928">
+          <End Role="devices" Type="Self.devices" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="wired_devices" Type="Self.wired_devices" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="devices">
+              <PropertyRef Name="asset_id" />
+            </Principal>
+            <Dependent Role="wired_devices">
+              <PropertyRef Name="asset_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__wired_dev__vlan___440B1D61">
+          <End Role="vlans" Type="Self.vlans" Multiplicity="0..1" />
+          <End Role="wired_devices" Type="Self.wired_devices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vlans">
+              <PropertyRef Name="vlan_id" />
+            </Principal>
+            <Dependent Role="wired_devices">
+              <PropertyRef Name="vlan_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NetInventoryModelStoreContainer">
+          <EntitySet Name="computers" EntityType="Self.computers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="device_types" EntityType="Self.device_types" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="devices" EntityType="Self.devices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="network_devices" EntityType="Self.network_devices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="virtual_machines" EntityType="Self.virtual_machines" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vlans" EntityType="Self.vlans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="wired_devices" EntityType="Self.wired_devices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="All_Device_Data" EntityType="Self.All_Device_Data" store:Type="Views" Schema="dbo">
+            <!--<DefiningQuery>SELECT 
+    [All_Device_Data].[asset_id] AS [asset_id], 
+    [All_Device_Data].[description] AS [description], 
+    [All_Device_Data].[device_type] AS [device_type], 
+    [All_Device_Data].[device_subtype] AS [device_subtype], 
+    [All_Device_Data].[manufacturer] AS [manufacturer], 
+    [All_Device_Data].[model] AS [model], 
+    [All_Device_Data].[serial_number] AS [serial_number], 
+    [All_Device_Data].[building] AS [building], 
+    [All_Device_Data].[room] AS [room], 
+    [All_Device_Data].[status] AS [status], 
+    [All_Device_Data].[host_name] AS [host_name], 
+    [All_Device_Data].[mac_address] AS [mac_address], 
+    [All_Device_Data].[static_ip] AS [static_ip], 
+    [All_Device_Data].[switch_name] AS [switch_name], 
+    [All_Device_Data].[switch_port] AS [switch_port], 
+    [All_Device_Data].[vlan_id] AS [vlan_id], 
+    [All_Device_Data].[os_version] AS [os_version], 
+    [All_Device_Data].[cpu] AS [cpu], 
+    [All_Device_Data].[ram] AS [ram], 
+    [All_Device_Data].[hdd] AS [hdd]
+    FROM [dbo].[All_Device_Data] AS [All_Device_Data]</DefiningQuery>-->
+          </EntitySet>
+          <EntitySet Name="Computers_View" EntityType="Self.Computers_View" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Computers_View].[asset_id] AS [asset_id], 
+    [Computers_View].[description] AS [description], 
+    [Computers_View].[device_type] AS [device_type], 
+    [Computers_View].[device_subtype] AS [device_subtype], 
+    [Computers_View].[manufacturer] AS [manufacturer], 
+    [Computers_View].[model] AS [model], 
+    [Computers_View].[serial_number] AS [serial_number], 
+    [Computers_View].[building] AS [building], 
+    [Computers_View].[room] AS [room], 
+    [Computers_View].[status] AS [status], 
+    [Computers_View].[host_name] AS [host_name], 
+    [Computers_View].[mac_address] AS [mac_address], 
+    [Computers_View].[static_ip] AS [static_ip], 
+    [Computers_View].[switch_name] AS [switch_name], 
+    [Computers_View].[switch_port] AS [switch_port], 
+    [Computers_View].[vlan_id] AS [vlan_id], 
+    [Computers_View].[os_version] AS [os_version], 
+    [Computers_View].[cpu] AS [cpu], 
+    [Computers_View].[ram] AS [ram], 
+    [Computers_View].[hdd] AS [hdd]
+    FROM [dbo].[Computers_View] AS [Computers_View]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Device_Types_View" EntityType="Self.Device_Types_View" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Device_Types_View].[type] AS [type]
+    FROM [dbo].[Device_Types_View] AS [Device_Types_View]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Servers_View" EntityType="Self.Servers_View" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Servers_View].[asset_id] AS [asset_id], 
+    [Servers_View].[description] AS [description], 
+    [Servers_View].[device_type] AS [device_type], 
+    [Servers_View].[device_subtype] AS [device_subtype], 
+    [Servers_View].[manufacturer] AS [manufacturer], 
+    [Servers_View].[model] AS [model], 
+    [Servers_View].[serial_number] AS [serial_number], 
+    [Servers_View].[building] AS [building], 
+    [Servers_View].[room] AS [room], 
+    [Servers_View].[status] AS [status], 
+    [Servers_View].[host_name] AS [host_name], 
+    [Servers_View].[mac_address] AS [mac_address], 
+    [Servers_View].[static_ip] AS [static_ip], 
+    [Servers_View].[switch_name] AS [switch_name], 
+    [Servers_View].[switch_port] AS [switch_port], 
+    [Servers_View].[vlan_id] AS [vlan_id], 
+    [Servers_View].[os_version] AS [os_version], 
+    [Servers_View].[cpu] AS [cpu], 
+    [Servers_View].[ram] AS [ram], 
+    [Servers_View].[hdd] AS [hdd]
+    FROM [dbo].[Servers_View] AS [Servers_View]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Switch_Maps" EntityType="Self.Switch_Maps" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Switch_Maps].[switch_name] AS [switch_name], 
+    [Switch_Maps].[switch_port] AS [switch_port], 
+    [Switch_Maps].[vlan_id] AS [vlan_id], 
+    [Switch_Maps].[asset_id] AS [asset_id], 
+    [Switch_Maps].[description] AS [description], 
+    [Switch_Maps].[mac_address] AS [mac_address], 
+    [Switch_Maps].[static_ip] AS [static_ip], 
+    [Switch_Maps].[building] AS [building], 
+    [Switch_Maps].[room] AS [room]
+    FROM [dbo].[Switch_Maps] AS [Switch_Maps]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__computers__asset__46E78A0C" Association="Self.FK__computers__asset__46E78A0C">
+            <End Role="devices" EntitySet="devices" />
+            <End Role="computers" EntitySet="computers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__devices__3D5E1FD2" Association="Self.FK__devices__3D5E1FD2">
+            <End Role="device_types" EntitySet="device_types" />
+            <End Role="devices" EntitySet="devices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__network_d__asset__403A8C7D" Association="Self.FK__network_d__asset__403A8C7D">
+            <End Role="devices" EntitySet="devices" />
+            <End Role="network_devices" EntitySet="network_devices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__wired_dev__asset__4316F928" Association="Self.FK__wired_dev__asset__4316F928">
+            <End Role="devices" EntitySet="devices" />
+            <End Role="wired_devices" EntitySet="wired_devices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__wired_dev__vlan___440B1D61" Association="Self.FK__wired_dev__vlan___440B1D61">
+            <End Role="vlans" EntitySet="vlans" />
+            <End Role="wired_devices" EntitySet="wired_devices" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NetInventoryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="computer">
+          <Key>
+            <PropertyRef Name="asset_id" />
+          </Key>
+          <Property Name="asset_id" Type="Int16" Nullable="false" />
+          <Property Name="os_version" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="cpu" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ram" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="hdd" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="device" Relationship="Self.FK__computers__asset__4BAC3F29" FromRole="computers" ToRole="devices" />
+        </EntityType>
+        <EntityType Name="device_types">
+          <Key>
+            <PropertyRef Name="type" />
+            <PropertyRef Name="subtype" />
+          </Key>
+          <Property Name="type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="subtype" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="devices" Relationship="Self.FK__devices__3F466844" FromRole="device_types" ToRole="devices" />
+        </EntityType>
+        <EntityType Name="device">
+          <Key>
+            <PropertyRef Name="asset_id" />
+          </Key>
+          <Property Name="asset_id" Type="Int16" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="device_type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="device_subtype" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="manufacturer" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="model" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="serial_number" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="building" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="room" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="computer" Relationship="Self.FK__computers__asset__4BAC3F29" FromRole="devices" ToRole="computers" />
+          <NavigationProperty Name="device_types" Relationship="Self.FK__devices__3F466844" FromRole="devices" ToRole="device_types" />
+          <NavigationProperty Name="network_devices" Relationship="Self.FK__network_d__asset__44FF419A" FromRole="devices" ToRole="network_devices" />
+          <NavigationProperty Name="wired_devices" Relationship="Self.FK__wired_dev__asset__47DBAE45" FromRole="devices" ToRole="wired_devices" />
+        </EntityType>
+        <EntityType Name="network_devices">
+          <Key>
+            <PropertyRef Name="asset_id" />
+          </Key>
+          <Property Name="asset_id" Type="Int16" Nullable="false" />
+          <Property Name="host_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="mac_address" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+          <Property Name="static_ip" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="device" Relationship="Self.FK__network_d__asset__44FF419A" FromRole="network_devices" ToRole="devices" />
+        </EntityType>
+        <EntityType Name="virtual_machines">
+          <Key>
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="hypervisor" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="services" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="os_version" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="vcpu" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="ram" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="hdd" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vlan">
+          <Key>
+            <PropertyRef Name="vlan_id" />
+          </Key>
+          <Property Name="vlan_id" Type="Int16" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="wired_devices" Relationship="Self.FK__wired_dev__vlan___48CFD27E" FromRole="vlans" ToRole="wired_devices" />
+        </EntityType>
+        <EntityType Name="wired_devices">
+          <Key>
+            <PropertyRef Name="asset_id" />
+          </Key>
+          <Property Name="asset_id" Type="Int16" Nullable="false" />
+          <Property Name="switch_port" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="vlan_id" Type="Int16" />
+          <NavigationProperty Name="device" Relationship="Self.FK__wired_dev__asset__47DBAE45" FromRole="wired_devices" ToRole="devices" />
+          <NavigationProperty Name="vlan" Relationship="Self.FK__wired_dev__vlan___48CFD27E" FromRole="wired_devices" ToRole="vlans" />
+          <Property Name="switch_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="All_Device_Data">
+          <Key>
+            <PropertyRef Name="asset_id" />
+          </Key>
+          <Property Name="asset_id" Type="Int16" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="device_type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="device_subtype" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="manufacturer" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="model" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="serial_number" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="building" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="room" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="host_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="mac_address" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+          <Property Name="static_ip" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="switch_port" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="vlan_id" Type="Int16" />
+          <Property Name="os_version" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="cpu" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ram" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="hdd" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="switch_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Computers_View">
+          <Key>
+            <PropertyRef Name="asset_id" />
+          </Key>
+          <Property Name="asset_id" Type="Int16" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="device_type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="device_subtype" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="manufacturer" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="model" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="serial_number" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="building" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="room" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="host_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="mac_address" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+          <Property Name="static_ip" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="switch_port" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="vlan_id" Type="Int16" />
+          <Property Name="os_version" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="cpu" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ram" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="hdd" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="switch_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Servers_View">
+          <Key>
+            <PropertyRef Name="asset_id" />
+          </Key>
+          <Property Name="asset_id" Type="Int16" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="device_type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="device_subtype" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="manufacturer" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="model" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="serial_number" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="building" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="room" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="host_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="mac_address" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+          <Property Name="static_ip" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="switch_port" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="vlan_id" Type="Int16" />
+          <Property Name="os_version" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="cpu" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ram" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="hdd" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="switch_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Switch_Maps">
+          <Key>
+            <PropertyRef Name="asset_id" />
+          </Key>
+          <Property Name="switch_port" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="vlan_id" Type="Int16" />
+          <Property Name="asset_id" Type="Int16" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="mac_address" Type="String" MaxLength="17" FixedLength="false" Unicode="false" />
+          <Property Name="static_ip" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="building" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="room" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="switch_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__computers__asset__4BAC3F29">
+          <End Role="devices" Type="Self.device" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="computers" Type="Self.computer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="devices">
+              <PropertyRef Name="asset_id" />
+            </Principal>
+            <Dependent Role="computers">
+              <PropertyRef Name="asset_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__devices__3F466844">
+          <End Role="device_types" Type="Self.device_types" Multiplicity="0..1" />
+          <End Role="devices" Type="Self.device" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="device_types">
+              <PropertyRef Name="type" />
+              <PropertyRef Name="subtype" />
+            </Principal>
+            <Dependent Role="devices">
+              <PropertyRef Name="device_type" />
+              <PropertyRef Name="device_subtype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__network_d__asset__44FF419A">
+          <End Role="devices" Type="Self.device" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="network_devices" Type="Self.network_devices" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="devices">
+              <PropertyRef Name="asset_id" />
+            </Principal>
+            <Dependent Role="network_devices">
+              <PropertyRef Name="asset_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__wired_dev__asset__47DBAE45">
+          <End Role="devices" Type="Self.device" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="wired_devices" Type="Self.wired_devices" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="devices">
+              <PropertyRef Name="asset_id" />
+            </Principal>
+            <Dependent Role="wired_devices">
+              <PropertyRef Name="asset_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__wired_dev__vlan___48CFD27E">
+          <End Role="vlans" Type="Self.vlan" Multiplicity="0..1" />
+          <End Role="wired_devices" Type="Self.wired_devices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vlans">
+              <PropertyRef Name="vlan_id" />
+            </Principal>
+            <Dependent Role="wired_devices">
+              <PropertyRef Name="vlan_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NetInventoryEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="computers" EntityType="Self.computer" />
+          <EntitySet Name="device_types" EntityType="Self.device_types" />
+          <EntitySet Name="devices" EntityType="Self.device" />
+          <EntitySet Name="network_devices" EntityType="Self.network_devices" />
+          <EntitySet Name="virtual_machines" EntityType="Self.virtual_machines" />
+          <EntitySet Name="vlans" EntityType="Self.vlan" />
+          <EntitySet Name="wired_devices" EntityType="Self.wired_devices" />
+          <EntitySet Name="All_Device_Data" EntityType="Self.All_Device_Data" />
+          <EntitySet Name="Computers_View" EntityType="Self.Computers_View" />
+          <EntitySet Name="Servers_View" EntityType="Self.Servers_View" />
+          <EntitySet Name="Switch_Maps" EntityType="Self.Switch_Maps" />
+          <AssociationSet Name="FK__computers__asset__4BAC3F29" Association="Self.FK__computers__asset__4BAC3F29">
+            <End Role="devices" EntitySet="devices" />
+            <End Role="computers" EntitySet="computers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__devices__3F466844" Association="Self.FK__devices__3F466844">
+            <End Role="device_types" EntitySet="device_types" />
+            <End Role="devices" EntitySet="devices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__network_d__asset__44FF419A" Association="Self.FK__network_d__asset__44FF419A">
+            <End Role="devices" EntitySet="devices" />
+            <End Role="network_devices" EntitySet="network_devices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__wired_dev__asset__47DBAE45" Association="Self.FK__wired_dev__asset__47DBAE45">
+            <End Role="devices" EntitySet="devices" />
+            <End Role="wired_devices" EntitySet="wired_devices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__wired_dev__vlan___48CFD27E" Association="Self.FK__wired_dev__vlan___48CFD27E">
+            <End Role="vlans" EntitySet="vlans" />
+            <End Role="wired_devices" EntitySet="wired_devices" />
+          </AssociationSet>
+          <EntitySet Name="Device_Types_View" EntityType="NetInventoryModel.Device_Types_View" />
+        </EntityContainer>
+        <EntityType Name="Device_Types_View">
+          <Key>
+            <PropertyRef Name="type" />
+          </Key>
+          <Property Name="type" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NetInventoryModelStoreContainer" CdmEntityContainer="NetInventoryEntities">
+          <EntitySetMapping Name="computers">
+            <EntityTypeMapping TypeName="NetInventoryModel.computer">
+              <MappingFragment StoreEntitySet="computers">
+                <ScalarProperty Name="asset_id" ColumnName="asset_id" />
+                <ScalarProperty Name="os_version" ColumnName="os_version" />
+                <ScalarProperty Name="cpu" ColumnName="cpu" />
+                <ScalarProperty Name="ram" ColumnName="ram" />
+                <ScalarProperty Name="hdd" ColumnName="hdd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="device_types">
+            <EntityTypeMapping TypeName="NetInventoryModel.device_types">
+              <MappingFragment StoreEntitySet="device_types">
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="subtype" ColumnName="subtype" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="devices">
+            <EntityTypeMapping TypeName="NetInventoryModel.device">
+              <MappingFragment StoreEntitySet="devices">
+                <ScalarProperty Name="asset_id" ColumnName="asset_id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="device_type" ColumnName="device_type" />
+                <ScalarProperty Name="device_subtype" ColumnName="device_subtype" />
+                <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="serial_number" ColumnName="serial_number" />
+                <ScalarProperty Name="building" ColumnName="building" />
+                <ScalarProperty Name="room" ColumnName="room" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="network_devices">
+            <EntityTypeMapping TypeName="NetInventoryModel.network_devices">
+              <MappingFragment StoreEntitySet="network_devices">
+                <ScalarProperty Name="asset_id" ColumnName="asset_id" />
+                <ScalarProperty Name="host_name" ColumnName="host_name" />
+                <ScalarProperty Name="mac_address" ColumnName="mac_address" />
+                <ScalarProperty Name="static_ip" ColumnName="static_ip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="virtual_machines">
+            <EntityTypeMapping TypeName="NetInventoryModel.virtual_machines">
+              <MappingFragment StoreEntitySet="virtual_machines">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="hypervisor" ColumnName="hypervisor" />
+                <ScalarProperty Name="services" ColumnName="services" />
+                <ScalarProperty Name="os_version" ColumnName="os_version" />
+                <ScalarProperty Name="vcpu" ColumnName="vcpu" />
+                <ScalarProperty Name="ram" ColumnName="ram" />
+                <ScalarProperty Name="hdd" ColumnName="hdd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vlans">
+            <EntityTypeMapping TypeName="NetInventoryModel.vlan">
+              <MappingFragment StoreEntitySet="vlans">
+                <ScalarProperty Name="vlan_id" ColumnName="vlan_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wired_devices">
+            <EntityTypeMapping TypeName="NetInventoryModel.wired_devices">
+              <MappingFragment StoreEntitySet="wired_devices">
+                <ScalarProperty Name="switch_name" ColumnName="switch_name" />
+                <ScalarProperty Name="asset_id" ColumnName="asset_id" />
+                <ScalarProperty Name="switch_port" ColumnName="switch_port" />
+                <ScalarProperty Name="vlan_id" ColumnName="vlan_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="All_Device_Data">
+            <EntityTypeMapping TypeName="NetInventoryModel.All_Device_Data">
+              <MappingFragment StoreEntitySet="All_Device_Data">
+                <ScalarProperty Name="switch_name" ColumnName="switch_name" />
+                <ScalarProperty Name="asset_id" ColumnName="asset_id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="device_type" ColumnName="device_type" />
+                <ScalarProperty Name="device_subtype" ColumnName="device_subtype" />
+                <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="serial_number" ColumnName="serial_number" />
+                <ScalarProperty Name="building" ColumnName="building" />
+                <ScalarProperty Name="room" ColumnName="room" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="host_name" ColumnName="host_name" />
+                <ScalarProperty Name="mac_address" ColumnName="mac_address" />
+                <ScalarProperty Name="static_ip" ColumnName="static_ip" />
+                <ScalarProperty Name="switch_port" ColumnName="switch_port" />
+                <ScalarProperty Name="vlan_id" ColumnName="vlan_id" />
+                <ScalarProperty Name="os_version" ColumnName="os_version" />
+                <ScalarProperty Name="cpu" ColumnName="cpu" />
+                <ScalarProperty Name="ram" ColumnName="ram" />
+                <ScalarProperty Name="hdd" ColumnName="hdd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Computers_View">
+            <EntityTypeMapping TypeName="NetInventoryModel.Computers_View">
+              <MappingFragment StoreEntitySet="Computers_View">
+                <ScalarProperty Name="switch_name" ColumnName="switch_name" />
+                <ScalarProperty Name="asset_id" ColumnName="asset_id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="device_type" ColumnName="device_type" />
+                <ScalarProperty Name="device_subtype" ColumnName="device_subtype" />
+                <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="serial_number" ColumnName="serial_number" />
+                <ScalarProperty Name="building" ColumnName="building" />
+                <ScalarProperty Name="room" ColumnName="room" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="host_name" ColumnName="host_name" />
+                <ScalarProperty Name="mac_address" ColumnName="mac_address" />
+                <ScalarProperty Name="static_ip" ColumnName="static_ip" />
+                <ScalarProperty Name="switch_port" ColumnName="switch_port" />
+                <ScalarProperty Name="vlan_id" ColumnName="vlan_id" />
+                <ScalarProperty Name="os_version" ColumnName="os_version" />
+                <ScalarProperty Name="cpu" ColumnName="cpu" />
+                <ScalarProperty Name="ram" ColumnName="ram" />
+                <ScalarProperty Name="hdd" ColumnName="hdd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Servers_View">
+            <EntityTypeMapping TypeName="NetInventoryModel.Servers_View">
+              <MappingFragment StoreEntitySet="Servers_View">
+                <ScalarProperty Name="switch_name" ColumnName="switch_name" />
+                <ScalarProperty Name="asset_id" ColumnName="asset_id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="device_type" ColumnName="device_type" />
+                <ScalarProperty Name="device_subtype" ColumnName="device_subtype" />
+                <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="serial_number" ColumnName="serial_number" />
+                <ScalarProperty Name="building" ColumnName="building" />
+                <ScalarProperty Name="room" ColumnName="room" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="host_name" ColumnName="host_name" />
+                <ScalarProperty Name="mac_address" ColumnName="mac_address" />
+                <ScalarProperty Name="static_ip" ColumnName="static_ip" />
+                <ScalarProperty Name="switch_port" ColumnName="switch_port" />
+                <ScalarProperty Name="vlan_id" ColumnName="vlan_id" />
+                <ScalarProperty Name="os_version" ColumnName="os_version" />
+                <ScalarProperty Name="cpu" ColumnName="cpu" />
+                <ScalarProperty Name="ram" ColumnName="ram" />
+                <ScalarProperty Name="hdd" ColumnName="hdd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Switch_Maps">
+            <EntityTypeMapping TypeName="NetInventoryModel.Switch_Maps">
+              <MappingFragment StoreEntitySet="Switch_Maps">
+                <ScalarProperty Name="switch_name" ColumnName="switch_name" />
+                <ScalarProperty Name="switch_port" ColumnName="switch_port" />
+                <ScalarProperty Name="vlan_id" ColumnName="vlan_id" />
+                <ScalarProperty Name="asset_id" ColumnName="asset_id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="mac_address" ColumnName="mac_address" />
+                <ScalarProperty Name="static_ip" ColumnName="static_ip" />
+                <ScalarProperty Name="building" ColumnName="building" />
+                <ScalarProperty Name="room" ColumnName="room" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Device_Types_View">
+            <EntityTypeMapping TypeName="NetInventoryModel.Device_Types_View">
+              <MappingFragment StoreEntitySet="Device_Types_View">
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

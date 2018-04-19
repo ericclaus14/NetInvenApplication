@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d288667a8fa9417381752c95aef5fcda" Name="Diagram1">
+        <EntityTypeShape EntityType="NetInventoryModel.computer" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetInventoryModel.device_types" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetInventoryModel.device" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetInventoryModel.network_devices" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetInventoryModel.virtual_machines" Width="1.5" PointX="8.875" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetInventoryModel.vlan" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetInventoryModel.wired_devices" Width="1.5" PointX="8.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetInventoryModel.All_Device_Data" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetInventoryModel.Computers_View" Width="1.5" PointX="2.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetInventoryModel.Servers_View" Width="1.5" PointX="4.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetInventoryModel.Switch_Maps" Width="1.5" PointX="6.625" PointY="9.125" IsExpanded="true" />
+        <AssociationConnector Association="NetInventoryModel.FK__computers__asset__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="NetInventoryModel.FK__devices__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="NetInventoryModel.FK__network_d__asset__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="NetInventoryModel.FK__wired_dev__asset__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="NetInventoryModel.FK__wired_dev__vlan___48CFD27E" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="NetInventoryModel.Device_Types_View" Width="1.5" PointX="8.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,85 @@
+﻿@model NetInvenApplication.Models.Switch_Maps
+
+@{
+    ViewBag.Title = "Details";
+}
+@{
+    Layout = "";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Switch_Maps</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.switch_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.switch_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.switch_port)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.switch_port)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vlan_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vlan_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mac_address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mac_address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.static_ip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.static_ip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.building)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.building)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.room)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.room)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.asset_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
