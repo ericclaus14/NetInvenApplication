@@ -212,24 +212,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="images\index_bk.JPG" />
     <Content Include="images\index_bk.mp4" />
     <Content Include="images\logo.png" />
-    <Content Include="images\logo2.png" />
     <Content Include="images\menu-add.png" />
     <Content Include="images\menu-home.png" />
     <Content Include="images\menu-inventory.png" />
     <Content Include="images\menu-li-small.png" />
     <Content Include="images\menu-support.png" />
     <Content Include="images\menu-switch.png" />
-    <Content Include="images\switch.jpg" />
     <Content Include="Models\DbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DbModel.Context.cs</LastGenOutput>
@@ -279,17 +273,11 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\All_Device_Data\Create.cshtml" />
     <Content Include="Views\All_Device_Data\Delete.cshtml" />
-    <Content Include="Views\All_Device_Data\Details.cshtml" />
     <Content Include="Views\All_Device_Data\Edit.cshtml" />
     <Content Include="Views\All_Device_Data\Index.cshtml" />
-    <Content Include="Views\Switch_Maps\Create.cshtml" />
-    <Content Include="Views\Switch_Maps\Delete.cshtml" />
-    <Content Include="Views\Switch_Maps\Details.cshtml" />
     <Content Include="Views\Switch_Maps\Edit.cshtml" />
     <Content Include="Views\Switch_Maps\Index.cshtml" />
     <Content Include="Views\Home\support.cshtml" />
@@ -306,15 +294,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
