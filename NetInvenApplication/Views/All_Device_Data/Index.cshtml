@@ -52,12 +52,12 @@
     <div class="page-content">
         <div class="table-container">
             @*<h2>View Entities in the Database</h2>*@
-            <table class="sortable sql-results">
+            <table class="sortable sql-results" id="All_Device_Data">
                 <tr>
-                    <th>
+                    <th class="frozen-column-assetID">
                         @Html.DisplayNameFor(model => model.asset_id)
                     </th>
-                    <th>
+                    <th class="frozen-column-description">
                         @Html.DisplayNameFor(model => model.description)
                     </th>
                     <th>
@@ -120,10 +120,10 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
+                        <td class="frozen-column-assetID">
                             @Html.DisplayFor(modelItem => item.asset_id)
                         </td>
-                        <td>
+                        <td class="frozen-column-description">
                             @Html.DisplayFor(modelItem => item.description)
                         </td>
                         <td>
