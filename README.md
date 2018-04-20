@@ -13,3 +13,6 @@ Current features:
   - View port maps of network switches.
   - Edit existing devices in the database.
   - Create new devices to add to the database. 
+
+If you have to update the database model in the Visual Studio project, follow the instructions at the below URL lest the database view "All_Device_Data" (which the website works with) be uneditable. 
+https://www.c-sharpcorner.com/blogs/entity-framework-error-on-savechanges1
