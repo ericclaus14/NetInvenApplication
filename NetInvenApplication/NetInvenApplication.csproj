@@ -245,8 +245,8 @@
       <DependentUpon>DbModel.edmx</DependentUpon>
     </Content>
     <Content Include="Scripts\sorttable.js" />
-    <Content Include="SQL Scripts\Data.sql" />
-    <Content Include="SQL Scripts\DDL.sql" />
+    <Content Include="SQL\Data.sql" />
+    <Content Include="SQL\DDL.sql" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

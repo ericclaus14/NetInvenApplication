@@ -51,143 +51,166 @@
 
     <div class="page-content">
         <div class="table-container">
-            @*<h2>View Entities in the Database</h2>*@
-            <table class="sortable sql-results" id="All_Device_Data">
-                <tr>
-                    <th class="frozen-column-assetID">
-                        @Html.DisplayNameFor(model => model.asset_id)
-                    </th>
-                    <th class="frozen-column-description">
-                        @Html.DisplayNameFor(model => model.description)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.device_type)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.device_subtype)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.manufacturer)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.model)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.serial_number)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.building)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.room)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.status)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.host_name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.mac_address)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.static_ip)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.switch_name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.switch_port)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.vlan_id)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.os_version)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.cpu)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ram)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.hdd)
-                    </th>
-                    <th></th>
-                </tr>
-
-                @foreach (var item in Model)
-                {
+            <div class="frozen-table-container">
+                <table class="sql-results" id="All_Device_Data-frozen">
                     <tr>
-                        <td class="frozen-column-assetID">
-                            @Html.DisplayFor(modelItem => item.asset_id)
-                        </td>
-                        <td class="frozen-column-description">
-                            @Html.DisplayFor(modelItem => item.description)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.device_type)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.device_subtype)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.manufacturer)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.model)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.serial_number)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.building)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.room)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.status)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.host_name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.mac_address)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.static_ip)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.switch_name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.switch_port)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.vlan_id)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.os_version)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.cpu)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ram)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.hdd)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.asset_id }) |
-                            @*@Html.ActionLink("Details", "Details", new { id = item.asset_id }) |*@
-                            @Html.ActionLink("Delete", "Delete", new { id = item.asset_id })
-                        </td>
+                        <th class="frozen-column-assetID">
+                            @Html.DisplayNameFor(model => model.asset_id)
+                        </th>
+                        <th class="frozen-column-description">
+                            @Html.DisplayNameFor(model => model.description)
+                        </th>
                     </tr>
-                }
-            </table>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="frozen-column-assetID">
+                                @Html.DisplayFor(modelItem => item.asset_id)
+                            </td>
+                            <td class="frozen-column-description">
+                                @Html.DisplayFor(modelItem => item.description)
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <div class="fluid-table-container">
+                <table class="sortable sql-results" id="All_Device_Data">
+                    <tr>
+                        @*<th class="frozen-column-assetID">
+                    @Html.DisplayNameFor(model => model.asset_id)
+                </th>
+                <th class="frozen-column-description">
+                    @Html.DisplayNameFor(model => model.description)
+                </th>*@
+                        <th class="first-non-frozen-column">
+                            @Html.DisplayNameFor(model => model.device_type)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.device_subtype)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.manufacturer)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.model)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.serial_number)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.building)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.room)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.status)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.host_name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.mac_address)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.static_ip)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.switch_name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.switch_port)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.vlan_id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.os_version)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.cpu)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ram)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.hdd)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+        {
+            <tr>
+                @*<td class="frozen-column-assetID">
+                    @Html.DisplayFor(modelItem => item.asset_id)
+                </td>
+                <td class="frozen-column-description">
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>*@
+                <td class="first-non-frozen-column">
+                    @Html.DisplayFor(modelItem => item.device_type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.device_subtype)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.manufacturer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.serial_number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.building)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.room)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.host_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.mac_address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.static_ip)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.switch_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.switch_port)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.vlan_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.os_version)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cpu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ram)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.hdd)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.asset_id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.asset_id })
+                </td>
+            </tr>
+}
+                </table>
+            </div>
         </div>
     </div>
 
@@ -195,145 +218,3 @@
         Design by <a href="https://www.linkedin.com/in/ericclaus/">Eric Claus</a>
     </div>
 </body>
-@*<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.asset_id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.device_type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.device_subtype)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.manufacturer)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.model)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.serial_number)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.building)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.room)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.host_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.mac_address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.static_ip)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.switch_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.switch_port)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.vlan_id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.os_version)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cpu)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ram)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.hdd)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.asset_id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.device_type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.device_subtype)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.manufacturer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.serial_number)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.building)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.room)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.host_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.mac_address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.static_ip)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.switch_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.switch_port)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.vlan_id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.os_version)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cpu)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ram)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.hdd)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.asset_id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.asset_id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.asset_id })
-            </td>
-        </tr>
-    }
-
-</table>*@

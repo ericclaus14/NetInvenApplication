@@ -184,12 +184,26 @@ td {
     width: 1px;
     white-space: nowrap;
 }
+.frozen-table-container {
+    float: left;
+    height: inherit;
+}
+.fluid-table-container {
+    overflow: auto;
+    height: inherit;
+}
 /*.frozen-column-assetID {
     position: absolute;
+    width: 50px;
+    background-color: black;
 }
 .frozen-column-description {
     position: absolute;
-    padding-right: 15px;
+    padding-left: 50px;
+    background-color: black;
+}
+.first-non-frozen-column {
+    padding-left: 200px;
 }*/
 tr:hover {
     background-color: rgba(169, 26, 41, 0.5);

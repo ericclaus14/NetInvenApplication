@@ -200,9 +200,9 @@ BEGIN
 				vlan_id = i.vlan_id
 			FROM wired_devices w, inserted i
 			WHERE w.asset_id = i.asset_id
-	IF (NOT EXISTS (SELECT w.asset_id
-		FROM wired_devices w, inserted i
-		WHERE w.asset_id = i.asset_id))
+	IF (NOT EXISTS (SELECT c.asset_id
+		FROM computers c, inserted i
+		WHERE c.asset_id = i.asset_id))
 		INSERT INTO computers
 			SELECT asset_id, os_version, cpu, ram, hdd
 			FROM inserted
