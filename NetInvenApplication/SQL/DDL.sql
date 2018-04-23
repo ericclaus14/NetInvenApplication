@@ -1,4 +1,5 @@
-CREATE DATABASE NetInventory
+DROP DATABASE NetInventory;
+CREATE DATABASE NetInventory;
 GO
 
 USE NetInventory
